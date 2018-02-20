@@ -7,29 +7,14 @@ Legi-Nr: 'Your legi number'
 
 ## News and Changes
 
-05.05.2017 08:50 - Added assignment 6   
-28.04.2017 08:50 - Added assignment 5   
-10.04.2017 17:12 - Added assignment 4  
-05.04.2017 07:54 - Adjusted travis file to compile assignment 2  
-24.03.2017 08:13 - Added assignment 3   
-14.03.2017 13:17 - Fixed segmentation fault issue.  
-10.03.2017 08:50 - Added assignment 2  
-09.03.2017 23:50 - Updated libigl to fix a bug in compiling the tutorials.  
-07.03.2017 12:41 - Updated assignment 1 to fix the load mesh button functionality.  
-06.03.2017 15:04 - Updated libigl to disable matlab dependency of tutorials.  
-05.03.2017 23:08 - Updated libigl to use newest nanogui and glew which possibly solves issues for some of you.  
-03.03.2017 10:40 - Updated cmake options to compile libigl tutorials (update your private repository if you created it before).
+
+20.02.2017 17:30 - Added assignment 1.
 
 Follow the [instructions](#workflow) to updated your private repository.
 
 ## Assignments Overview
 
-[Assignment 1](assignment1/README.md) (Due date: 17.03.2017 08:00)  
-[Assignment 2](assignment2/README.md) (Due date: 31.03.2017 08:00)  
-[Assignment 3](assignment3/README.md) (optional, not graded)  
-[Assignment 4](assignment4/README.md) (Due date: 05.05.2017 08:00)  
-[Assignment 5](assignment5/README.md) (Due date: 19.05.2017 08:00)  
-[Assignment 6](assignment6/README.md) (Due date: 02.06.2017 08:00)
+[Assignment 1](assignment1/README.md) (Due date: 09.03.2017 08:00)  
 
 ## General Rules and Instructions
 
