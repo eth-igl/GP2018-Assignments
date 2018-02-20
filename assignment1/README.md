@@ -5,11 +5,13 @@ Edit this 'README.md' file to report all your results. There is no need to write
 ## Required results
 
 ### Tasks
-3) Add a text dump of the content of the two data structures for the provided mesh “plane.off”.
+1) Add a text dump of the content of the two data structures for the provided mesh “plane.off”.
 
-4) Show three screenshots of the 'fandisk.off' model using 'per-face shading', 'per-vertex shading' and 'per-corner shading'.
-
-5) Show screenshots of the provided meshes with each connected component colored differently. Show the number of connected components and the size of each component (measured in number
+2) Show screenshots of the provided meshes with each connected component colored differently. Show the number of connected components and the size of each component (measured in number
 of faces) for all the provided models.
 
-6) Show screenshots of the subdivided meshes.
+3) Show screenshots of the subdivided meshes.
+
+4) Show screenshots of face extrusion.
+
+5) Show a screenshot of a mesh you designed yourself starting from 'cube.off' and using the GUI supplied editing operations, as well as sqrt3 subdivision and face extrusion. Make sure to also save the mesh under the name 'design.off', commit and push it. 
