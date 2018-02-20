@@ -7,12 +7,12 @@ int pick_face(igl::viewer::Viewer& viewer, int mouse_x, int mouse_y, const Eigen
   
   Eigen::RowVector3d pt;
   
-  Eigen::Matrix4f modelview = viewer.core.view * viewer.core.model;
+  Eigen::Matrix4f modelview = viewer.core.view * viewer.data.model;
   int vi = -1;
   
   std::vector<igl::Hit> hits;
 
-  igl::unproject_in_mesh(Eigen::Vector2f(x,y), viewer.core.view * viewer.core.model,
+  igl::unproject_in_mesh(Eigen::Vector2f(x,y), viewer.core.view * viewer.data.model,
       viewer.core.proj, viewer.core.viewport, V, F, pt,hits);
 
   int fi = -1;
@@ -29,7 +29,7 @@ int pick_vertex(igl::viewer::Viewer& viewer, int mouse_x, int mouse_y, const Eig
   
   Eigen::RowVector3d pt;
   
-  Eigen::Matrix4f modelview = viewer.core.view * viewer.core.model;
+  Eigen::Matrix4f modelview = viewer.core.view * viewer.data.model;
   int vi = -1;
   
   std::vector<igl::Hit> hits;
@@ -41,7 +41,7 @@ int pick_vertex(igl::viewer::Viewer& viewer, int mouse_x, int mouse_y, const Eig
                          ei,pt,hits);
   */
 
-  igl::unproject_in_mesh(Eigen::Vector2f(x,y), viewer.core.view * viewer.core.model,
+  igl::unproject_in_mesh(Eigen::Vector2f(x,y), viewer.core.view * viewer.data.model,
       viewer.core.proj, viewer.core.viewport, V, F, pt,hits);
 
   if (hits.size()> 0) {
@@ -61,7 +61,7 @@ Eigen::Vector3f computeTranslation (igl::viewer::Viewer& viewer,
                                     int mouse_y,
                                     int from_y,
                                     Eigen::RowVector3d pt3D) {
-    Eigen::Matrix4f modelview = viewer.core.view * viewer.core.model;
+    Eigen::Matrix4f modelview = viewer.core.view * viewer.data.model;
     //project the given point (typically the handle centroid) to get a screen space depth
     Eigen::Vector3f proj = igl::project(pt3D.transpose().cast<float>().eval(),
                                                                             modelview,
