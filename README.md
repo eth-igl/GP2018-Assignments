@@ -8,7 +8,7 @@ Legi-Nr: 'Your legi number'
 ## News and Changes
 
 
-20.02.2017 17:30 - Added assignment 1.
+20.02.2018 17:30 - Added assignment 1.
 
 Follow the [instructions](#workflow) to update your private repository.
 
