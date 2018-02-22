@@ -97,9 +97,7 @@ git submodule sync
 git submodule update --init --recursive
 ```
 
-Every submission must build on Linux before it can be graded/considered complete. To check this, you will use Travis-CI, a tool for automatically rebuilding your code each time you push it to GitHub.
-
-We've already configured Travis-CI for this repository: Travis-CI works by running the script in '.travis.yml' each time new commits are pushed. You will need to follow the [getting started instructions](https://travis-ci.com/getting_started) to sign into Travis-CI with your GitHub account, grant it permission, and enable builds on your private assignment repositories.
+Your code should be able to compile and run on our computers as well. Please do not change any of the build files, and only add code for the supplied source files. We generally specify the exact areas for you to add your assignment code.
 
 ### Solution Submission
 In every assignment directory you will find a 'README.md' file in which we will specify the required screenshots and console outputs. You should briefly summarize and report your results and observations, or discuss possible problems. For a quick introduction of the Markdown syntax see: https://guides.github.com/features/mastering-markdown/
