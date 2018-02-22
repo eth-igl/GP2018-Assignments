@@ -19,7 +19,7 @@
 using namespace std;
 using Viewer = igl::viewer::Viewer;
 
-enum MouseMode { NONE, FACE_SELECT, VERTEX_SELECT, TRANSLATE };
+enum MouseMode { NONE, FACE_SELECT, VERTEX_SELECT, TRANSLATE, ROTATE };
 MouseMode mouse_mode = NONE;
 bool doit = false;
 int down_mouse_x = -1, down_mouse_y = -1;
@@ -169,7 +169,7 @@ void export_mesh() {
 }
 
 bool callback_init(igl::viewer::Viewer& viewer) {
-    viewer.ngui->addVariable("Mouse Mode", mouse_mode, true)->setItems({ "None","Faces Select","Vertex Select", "Translate"});
+    viewer.ngui->addVariable("Mouse Mode", mouse_mode, true)->setItems({ "None","Faces Select","Vertex Select", "Translate", "Rotate"});
     viewer.ngui->addButton("Extrude",[&](){extrude(viewer);});
     viewer.ngui->addButton("Clear selection",[&](){clear_selection(viewer);});
     viewer.ngui->addButton("Export mesh",[&](){export_mesh();});
@@ -202,7 +202,7 @@ bool callback_mouse_down(igl::viewer::Viewer& viewer, int button, int modifier) 
             update_display(viewer);
             viewer.data.set_points(V.row(selected_v),Eigen::RowVector3d(1,0,0));
         }
-    } else if (mouse_mode == TRANSLATE) {
+    } else if ((mouse_mode == TRANSLATE) || (mouse_mode == ROTATE)) {
         if (!selected_faces.empty()) {
             int f = pick_face(viewer, down_mouse_x, down_mouse_y,V,F);
             if (std::find(selected_faces.begin(),selected_faces.end(),f)!= selected_faces.end()) {
@@ -234,23 +234,39 @@ Eigen::RowVector3d get_face_avg(const Eigen::MatrixXd& V, const Eigen::MatrixXi&
 bool callback_mouse_move(igl::viewer::Viewer& viewer, int mouse_x, int mouse_y) {
     if (!doit)
         return false;
-    if (mouse_mode == TRANSLATE) {
+    if ((mouse_mode == TRANSLATE) || (mouse_mode == ROTATE))  {
         if (!selected_faces.empty()) {
             Eigen::RowVector3d face_avg_pt = get_face_avg(V,F,selected_faces);
-            Eigen::Vector3f translation = computeTranslation(viewer,
+            std::set<int> v_idx = get_v_from_faces_idx(F,selected_faces);
+            if (mouse_mode == TRANSLATE) {
+                Eigen::Vector3f translation = computeTranslation(viewer,
                                              mouse_x,
                                              down_mouse_x,
                                              mouse_y,
                                              down_mouse_y,
                                              face_avg_pt);
 
-            std::set<int> v_idx = get_v_from_faces_idx(F,selected_faces);
-            for (auto v_i : v_idx) {V.row(v_i) += translation.cast<double>();}
+                for (auto v_i : v_idx) {V.row(v_i) += translation.cast<double>();}
+            } else { // ROTATE
+                Eigen::Vector4f rotation = computeRotation(viewer,
+                                 mouse_x,
+                                 down_mouse_x,
+                                 mouse_y,
+                                 down_mouse_y,
+                                 face_avg_pt);
+                for (auto v_i : v_idx) {
+                    Eigen::RowVector3f goalPosition = V.row(v_i).cast<float>();
+                    goalPosition -= face_avg_pt.cast<float>();
+                    igl::rotate_by_quat(goalPosition.data(), rotation.data(), goalPosition.data());
+                    goalPosition += face_avg_pt.cast<float>();
+                    V.row(v_i) = goalPosition.cast<double>();
+                }
+            }
             viewer.data.set_mesh(V,F);
             down_mouse_x = mouse_x;
             down_mouse_y = mouse_y;
-            return true;
-        } else if (selected_v!=-1) {
+            return true;    
+        } else if ((selected_v!=-1) && (mouse_mode == TRANSLATE)) {
             Eigen::Vector3f translation = computeTranslation(viewer,
                                              mouse_x,
                                              down_mouse_x,
