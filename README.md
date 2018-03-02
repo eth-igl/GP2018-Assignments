@@ -9,13 +9,15 @@ Legi-Nr: 'Your legi number'
 
 
 20.02.2018 17:30 - Added assignment 1.
+
 02.03.2018 12:40 - Added assignment 2.
 
 Follow the [instructions](#workflow) to update your private repository.
 
 ## Assignments Overview
 
-[Assignment 1](assignment1/README.md) (Due date: 09.03.2018 08:00)  
+[Assignment 1](assignment1/README.md) (Due date: 09.03.2018 09:00)  
+[Assignment 2](assignment2/README.md) (Due date: 23.03.2018 09:00)  
 
 ## General Rules and Instructions
 
