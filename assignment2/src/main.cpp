@@ -162,7 +162,7 @@ bool callback_key_down(Viewer &viewer, unsigned char key, int modifiers) {
     if (key == '1') {
         // Show imported points
         viewer.data.clear();
-        viewer.core.align_camera_position(P);
+        viewer.core.align_camera_center(P);
         viewer.data.point_size = 11;
         viewer.data.add_points(P, Eigen::RowVector3d(0,0,0));
     }
@@ -170,7 +170,7 @@ bool callback_key_down(Viewer &viewer, unsigned char key, int modifiers) {
     if (key == '2') {
         // Show all constraints
         viewer.data.clear();
-        viewer.core.align_camera_position(P);
+        viewer.core.align_camera_center(P);
         // Add your code for computing auxiliary constraint points here
         // Add code for displaying all points, as above
     }
@@ -178,7 +178,7 @@ bool callback_key_down(Viewer &viewer, unsigned char key, int modifiers) {
     if (key == '3') {
         // Show grid points with colored nodes and connected with lines
         viewer.data.clear();
-        viewer.core.align_camera_position(P);
+        viewer.core.align_camera_center(P);
         // Add code for creating a grid
         // Add your code for evaluating the implicit function at the grid points
         // Add code for displaying points and lines
@@ -264,10 +264,16 @@ int main(int argc, char *argv[]) {
 
     Viewer viewer;
     viewer.callback_key_down = callback_key_down;
-    viewer.callback_load_mesh = callback_load_mesh;
+    //viewer.callback_load_mesh = callback_load_mesh;
 
     viewer.callback_init = [&](Viewer &v) {
         // Add widgets to the sidebar.
+        v.ngui->addButton("Load mesh", [&](){
+            std::string fname = igl::file_dialog_open();
+            if (fname.length() == 0) return;
+            callback_load_mesh(v,fname);
+        });
+
         v.ngui->addGroup("Reconstruction Options");
         v.ngui->addVariable("Resolution", resolution);
         v.ngui->addButton("Reset Grid", [&](){
