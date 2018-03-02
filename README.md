@@ -9,6 +9,7 @@ Legi-Nr: 'Your legi number'
 
 
 20.02.2018 17:30 - Added assignment 1.
+02.03.2018 12:40 - Added assignment 2.
 
 Follow the [instructions](#workflow) to update your private repository.
 
