@@ -268,7 +268,7 @@ int main(int argc, char *argv[]) {
 
     viewer.callback_init = [&](Viewer &v) {
         // Add widgets to the sidebar.
-        v.ngui->addButton("Load mesh", [&](){
+        v.ngui->addButton("Load Points", [&](){
             std::string fname = igl::file_dialog_open();
             if (fname.length() == 0) return;
             callback_load_mesh(v,fname);
