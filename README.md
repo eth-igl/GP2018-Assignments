@@ -22,8 +22,8 @@ Follow the [instructions](#workflow) to update your private repository.
 
 [Assignment 1](assignment1/README.md) (Due date: 09.03.2018 09:00)  
 [Assignment 2](assignment2/README.md) (Due date: 23.03.2018 09:00)  
-[Assignment 3](assignment3/README.md) (Due date: 13.04.2018 09:00) 
-[Assignment 4](assignment4/README.md) (Due date: 27.04.2018 09:00) 
+[Assignment 3](assignment3/README.md) (Due date: 13.04.2018 09:00)  
+[Assignment 4](assignment4/README.md) (Due date: 27.04.2018 09:00)  
 
 ## General Rules and Instructions
 
