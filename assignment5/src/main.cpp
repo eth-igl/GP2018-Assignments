@@ -82,7 +82,7 @@ void makeSimMesh() {
 	else if(element_type == FEM_ANALYTIC) {
 		simMesh.createElementsFromTriangles<FEMElementAnalytic>();
 	}
-	else if(element_type == FEM_ANALYTIC) {
+	else if(element_type == FEM_AUTODIFF ) {
 		simMesh.createElementsFromTriangles<FEMElementAutoDiff>();
 	}
 
