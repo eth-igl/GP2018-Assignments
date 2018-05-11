@@ -57,7 +57,7 @@ public:
 		Vector2d x1 = getNodePos(1, x);
 		Vector2d x2 = getNodePos(2, x);
 
-		return computeEnergyT({x0, x1, x2});
+		return computeEnergyT<double>({x0, x1, x2});
 	}
 
 	virtual void addEnergyGradientTo(const VectorXd& x, const VectorXd& X, VectorXd& grad) {
@@ -77,7 +77,7 @@ public:
 		for (int i = 0; i < 3; ++i) {
 			for (int j= 0; j < 2; ++j) {
 				xd[i][j].deriv() = 1;
-				grad[2*getNodeIndex(i) + j] += computeEnergyT(xd).deriv();
+				grad[2*getNodeIndex(i) + j] += computeEnergyT<AD>(xd).deriv();
 				xd[i][j].deriv() = 0;
 			}
 		}
@@ -103,7 +103,7 @@ public:
 				for (int i2 = 0; i2 < 3; ++i2) {
 					for (int j2 = 0; j2 < 2; ++j2) {
 						xdd[i2][j2].value().deriv() = 1;
-						hesEntries.push_back(Tripletd(2*getNodeIndex(i1)+j1, 2*getNodeIndex(i2)+j2, computeEnergyT(xdd).deriv().deriv()));
+						hesEntries.push_back(Tripletd(2*getNodeIndex(i1)+j1, 2*getNodeIndex(i2)+j2, computeEnergyT<ADD>(xdd).deriv().deriv()));
 						xdd[i2][j2].value().deriv() = 0;
 					}
 				}
