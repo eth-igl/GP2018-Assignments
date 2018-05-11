@@ -20,7 +20,9 @@ Legi-Nr: 'Your legi number'
 
 02.05.2018 01:00 - Added AutoDiff code for assignment 5.
 
-Follow the [instructions](#workflow) to update your private repository.
+11.05.2018 03:00 - Added assignment 6.
+
+Follow the instructions to update your private repository.
 
 ## Assignments Overview
 
@@ -29,6 +31,7 @@ Follow the [instructions](#workflow) to update your private repository.
 [Assignment 3](assignment3/README.md) (Due date: 13.04.2018 09:00)  
 [Assignment 4](assignment4/README.md) (Due date: 27.04.2018 09:00)  
 [Assignment 5](assignment5/README.md) (Due date: .11.05.2018 09:00)  
+[Assignment 6](assignment6/README.md) (Due date: .25.05.2018 09:00)  
 
 ## General Rules and Instructions
 
