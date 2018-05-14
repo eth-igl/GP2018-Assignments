@@ -128,6 +128,12 @@ set(OOQP_LIBS_LIST
   ooqpgensparse ooqpsparse ooqpgondzio ooqpbase ma27
 )
 
+if(APPLE)
+set(OOQP_LIBS_LIST
+  ${OOQP_LIBS_LIST} gfortran quadmath gcc
+)
+endif(APPLE)
+
 set(OOQP_FOUND_LIBS TRUE)
 foreach(LIB ${OOQP_LIBS_LIST})
   
@@ -151,7 +157,7 @@ foreach(LIB ${OOQP_LIBS_LIST})
 endforeach()
 
 # TODO: this is not very clean, use find package
-if (UNIX)
+if (UNIX AND NOT APPLE)
   set(OOQP_LIBRARIES ${OOQP_LIBRARIES} gfortran blas)
 endif (UNIX)
 
