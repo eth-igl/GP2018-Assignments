@@ -121,7 +121,7 @@ void updateViewerVertices() {
 		for (int j = 0; j < 2; ++j) {
 			V(i,j) = simMesh.x[2*i+j];
 		}
-//		V(i,2) = 0;
+		V(i,2) = 0;
 	}
 }
 
